@@ -164,7 +164,7 @@ The zip file containing the source data is located [here](https://d396qusza40orc
 The following transformations were applied to the source data:
 
 1. The training and test sets were merged to create one data set.
-'''
+```
 # concatenate individual data tables to make single data table
 humanActivity <- rbind(
   cbind(trainingSubjects, trainingValues, trainingActivity),
@@ -177,8 +177,7 @@ rm(trainingSubjects, trainingValues, trainingActivity,
 
 # assign column names
 colnames(humanActivity) <- c("subject", features[, 2], "activity")
-
-'''
+```
 
 1. The measurements on the mean and standard deviation (i.e. signals containing the strings `mean` and `std`) were extracted for each measurement, and the others were discarded.
 1. The activity identifiers (originally coded as integers between 1 and 6) were replaced with descriptive activity names (see [Identifiers](#identifiers) section).
