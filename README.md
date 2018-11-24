@@ -25,7 +25,7 @@ This repository contains the following files:
 - `CodeBook.md`, the code book, which describes the contents of the data set (data, variables and transformations used to generate the data).
 - `run_analysis.R`, the R script that was used to create the data set (see the [Creating the data set](#creating-data-set) section below) 
 
-## Study design <a name="study-design"></a>
+## Description <a name="Description"></a>
 
 The source data set that this project was based on was obtained from the [Human Activity Recognition Using Smartphones Data Set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#), which describes how the data was initially collected as follows:
 
