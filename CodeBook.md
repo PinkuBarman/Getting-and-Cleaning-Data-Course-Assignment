@@ -163,7 +163,31 @@ The zip file containing the source data is located [here](https://d396qusza40orc
 
 The following transformations were applied to the source data:
 
-1. The training and test sets were merged to create one data set.
+1. Merging the training and the test sets to create one data set:
+
+Reading files
+```
+# read training data
+trainingSubjects <- read.table(file.path(dataPath, "train", "subject_train.txt"))
+trainingValues <- read.table(file.path(dataPath, "train", "X_train.txt"))
+trainingActivity <- read.table(file.path(dataPath, "train", "y_train.txt"))
+
+# read test data
+testSubjects <- read.table(file.path(dataPath, "test", "subject_test.txt"))
+testValues <- read.table(file.path(dataPath, "test", "X_test.txt"))
+testActivity <- read.table(file.path(dataPath, "test", "y_test.txt"))
+
+# read features, don't convert text labels to factors
+features <- read.table(file.path(dataPath, "features.txt"), as.is = TRUE)
+## note: feature names (in features[, 2]) are not unique
+##       e.g. fBodyAcc-bandsEnergy()-1,8
+
+# read activity labels
+activities <- read.table(file.path(dataPath, "activity_labels.txt"))
+colnames(activities) <- c("activityId", "activityLabel")
+```
+
+Merging all data in one set:
 ```
 # concatenate individual data tables to make single data table
 humanActivity <- rbind(
