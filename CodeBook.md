@@ -1,4 +1,4 @@
-﻿# Code book for *Getting and Cleaning Data* course assignment
+﻿# Activity data Code Book
 
 The data set that this code book pertains to is located in the `tidy_data.txt` file of this repository.
 
