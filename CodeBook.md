@@ -201,11 +201,13 @@ rm(trainingSubjects, trainingValues, trainingActivity,
 colnames(humanActivity) <- c("subject", features[, 2], "activity")
 ```
 
-#### 2. The measurements on the mean and standard deviation (i.e. signals containing the strings `mean` and `std`) were extracted for each measurement, and the others were discarded.
+#### 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 
-#### 3. The activity identifiers (originally coded as integers between 1 and 6) were replaced with descriptive activity names (see [Identifiers](#identifiers) section).
+#### 3. Use descriptive activity names to name the activities in the data set.
 
-#### 4. The variable names were replaced with descriptive variable names (e.g. `tBodyAcc-mean()-X` was expanded to `timeDomainBodyAccelerometerMeanX`), using the following set of rules:
+#### 4. Appropriately labels the data set with descriptive variable names.
+
+The variable names were replaced with descriptive variable names (e.g. `tBodyAcc-mean()-X` was expanded to `timeDomainBodyAccelerometerMeanX`), using the following set of rules:
 
 	- Special characters (i.e. `(`, `)`, and `-`) were removed
 	- The initial `f` and `t` were expanded to `frequencyDomain` and `timeDomain` respectively.
