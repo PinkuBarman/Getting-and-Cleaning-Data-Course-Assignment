@@ -1,4 +1,4 @@
-﻿# Activity data Code Book
+﻿# Activity Data CodeBook
 
 The data set that this code book pertains to is located in the `tidy_data.txt` file of this repository.
 
