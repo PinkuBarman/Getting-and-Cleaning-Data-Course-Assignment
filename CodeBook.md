@@ -163,7 +163,7 @@ The zip file containing the source data is located [here](https://d396qusza40orc
 
 The following transformations were applied to the source data:
 
-###1. Merging the training and the test sets to create one data set:
+#### 1. Merging the training and the test sets to create one data set:
 
 Reading files
 ```
@@ -179,8 +179,6 @@ testActivity <- read.table(file.path(dataPath, "test", "y_test.txt"))
 
 # read features, don't convert text labels to factors
 features <- read.table(file.path(dataPath, "features.txt"), as.is = TRUE)
-## note: feature names (in features[, 2]) are not unique
-##       e.g. fBodyAcc-bandsEnergy()-1,8
 
 # read activity labels
 activities <- read.table(file.path(dataPath, "activity_labels.txt"))
@@ -203,9 +201,12 @@ rm(trainingSubjects, trainingValues, trainingActivity,
 colnames(humanActivity) <- c("subject", features[, 2], "activity")
 ```
 
-1. The measurements on the mean and standard deviation (i.e. signals containing the strings `mean` and `std`) were extracted for each measurement, and the others were discarded.
-1. The activity identifiers (originally coded as integers between 1 and 6) were replaced with descriptive activity names (see [Identifiers](#identifiers) section).
-1. The variable names were replaced with descriptive variable names (e.g. `tBodyAcc-mean()-X` was expanded to `timeDomainBodyAccelerometerMeanX`), using the following set of rules:
+#### 2. The measurements on the mean and standard deviation (i.e. signals containing the strings `mean` and `std`) were extracted for each measurement, and the others were discarded.
+
+#### 3. The activity identifiers (originally coded as integers between 1 and 6) were replaced with descriptive activity names (see [Identifiers](#identifiers) section).
+
+#### 4. The variable names were replaced with descriptive variable names (e.g. `tBodyAcc-mean()-X` was expanded to `timeDomainBodyAccelerometerMeanX`), using the following set of rules:
+
 	- Special characters (i.e. `(`, `)`, and `-`) were removed
 	- The initial `f` and `t` were expanded to `frequencyDomain` and `timeDomain` respectively.
 	- `Acc`, `Gyro`, `Mag`, `Freq`, `mean`, and `std` were replaced with `Accelerometer`, `Gyroscope`, `Magnitude`, `Frequency`, `Mean`, and `StandardDeviation` respectively.
