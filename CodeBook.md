@@ -4,15 +4,14 @@ The data set that this code book pertains to is located in the `tidy_data.txt` f
 
 See the `README.md` file of this repository for background information on this data set.
 
-The structure of the data set is described in the [Tidy Data](#Tidy data) section, its variables are listed in the [Variables](#variables) section, and the transformations that were carried out to obtain the data set based on the source data are presented in the [Transformations](#transformations) section.
+The structure of the data set is described in the [Tidy Data](#Tidydata) section, its variables are listed in the [Variables](#variables) section, and the transformations that were carried out to obtain the data set based on the source data are presented in the [Transformations](#transformations) section.
 
-## Tidy Data <a name="Tidy data"></a>
+## Tidy Data <a name="Tidydata"></a>
 
 The `tidy_data.txt` data file is a text file, containing space-separated values.
 
 ```
 tidydata<-read.table("tidy_data.txt",head=TRUE)
-
 ```
 ## Dimension <a name="Dimension"></a>
 ```
