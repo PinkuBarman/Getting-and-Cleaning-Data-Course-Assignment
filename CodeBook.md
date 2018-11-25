@@ -248,6 +248,7 @@ colnames(humanActivity) <- humanActivityCols
 
 ```
 The variable names were replaced with descriptive variable names using the following set of rules:
+
 	- Special characters (i.e. `(`, `)`, and `-`) were removed
 	- The initial `f` and `t` were expanded to `frequencyDomain` and `timeDomain` respectively.
 	- `Acc`, `Gyro`, `Mag`, `Freq`, `mean`, and `std` were replaced with `Accelerometer`, `Gyroscope`, `Magnitude`, `Frequency`, `Mean`, and `StandardDeviation` respectively.
