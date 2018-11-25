@@ -1,20 +1,20 @@
 ##############################################################################
 #
-# FILE
 #   run_analysis.R
 #
-# OVERVIEW
-#   Using data collected from the accelerometers from the Samsung Galaxy S 
-#   smartphone, work with the data and make a clean data set, outputting the
-#   resulting tidy data to a file named "tidy_data.txt".
-#   See README.md for details.
+#   The Goal is to prepare tidy data file "tidy_data.txt" from 
+#   source https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+#   that can be used for later analysis
 #
+##############################################################################
+
+## Library used
 
 library(dplyr)
 
 
 ##############################################################################
-# STEP 0A - Get data
+# Downloading and Unzipping dataset
 ##############################################################################
 
 # download zip file containing data if it hasn't already been downloaded
@@ -33,7 +33,7 @@ if (!file.exists(dataPath)) {
 
 
 ##############################################################################
-# STEP 0B - Read data
+# Read Training and Test data
 ##############################################################################
 
 # read training data
@@ -46,6 +46,11 @@ testSubjects <- read.table(file.path(dataPath, "test", "subject_test.txt"))
 testValues <- read.table(file.path(dataPath, "test", "X_test.txt"))
 testActivity <- read.table(file.path(dataPath, "test", "y_test.txt"))
 
+
+##############################################################################
+# Read Supporting Metadata
+##############################################################################
+
 # read features, don't convert text labels to factors
 features <- read.table(file.path(dataPath, "features.txt"), as.is = TRUE)
 ## note: feature names (in features[, 2]) are not unique
@@ -54,6 +59,18 @@ features <- read.table(file.path(dataPath, "features.txt"), as.is = TRUE)
 # read activity labels
 activities <- read.table(file.path(dataPath, "activity_labels.txt"))
 colnames(activities) <- c("activityId", "activityLabel")
+
+##############################################################################
+# Look at the properties of the above variable
+##############################################################################
+
+str(trainingSubjects)
+str(trainingValues)
+str(trainingActivity)
+
+str(testSubjects)
+str(testValues)
+str(testActivity)
 
 
 ##############################################################################
@@ -136,3 +153,12 @@ humanActivityMeans <- humanActivity %>%
 # output to file "tidy_data.txt"
 write.table(humanActivityMeans, "tidy_data.txt", row.names = FALSE, 
             quote = FALSE)
+
+
+##############################################################################
+# tidy_data.txt
+##############################################################################
+
+tidydata<-read.table("tidy_data.txt",head=TRUE)
+
+dim(tidydata)
