@@ -163,7 +163,7 @@ The zip file containing the source data is located [here](https://d396qusza40orc
 
 The following transformations were applied to the source data:
 
-1. Merging the training and the test sets to create one data set:
+###1. Merging the training and the test sets to create one data set:
 
 Reading files
 ```
