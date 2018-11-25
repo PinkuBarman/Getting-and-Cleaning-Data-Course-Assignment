@@ -1,4 +1,3 @@
-# Coursera *Getting and Cleaning Data* course project
 
 The purpose of this project is to demonstrate ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. Required to submit: 1) a tidy data set as described below, 2) a link to a Github repository with script for performing the analysis, and 3) a code book that describes the variables, the data, and any transformations or work that performed to clean up the data called CodeBook.md.
 
@@ -24,7 +23,7 @@ The source data set that this project was based on was obtained from [here](http
 
 Training and test data were first merged together to create one data set, then the measurements on the mean and standard deviation were extracted for each measurement (79 variables extracted from the original 561), and then the measurements were averaged for each subject and activity, resulting in the final data set.
 
-## Creating the data set <a name="creating-data-set"></a>
+## Main Purpose <a name="Main-Purpose"></a>
 
 The R script `run_analysis.R` can be used to create the data set. It retrieves the source data set and transforms it to produce the final data set by implementing the following steps (see the Code book for details, as well as the comments in the script itself):
 
