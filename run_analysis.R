@@ -1,7 +1,5 @@
 ##############################################################################
 #
-#   run_analysis.R
-#
 #   The Goal is to prepare tidy data file "tidy_data.txt" from 
 #   source https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 #   that can be used for later analysis
@@ -14,7 +12,7 @@ library(dplyr)
 
 
 ##############################################################################
-# Downloading and Unzipping dataset
+# Download and Unzip dataset from source
 ##############################################################################
 
 # download zip file containing data if it hasn't already been downloaded
@@ -33,15 +31,15 @@ if (!file.exists(dataPath)) {
 
 
 ##############################################################################
-# Read Training and Test data
+# Read Training and Test dataset
 ##############################################################################
 
-# read training data
+# read training dataset
 trainingSubjects <- read.table(file.path(dataPath, "train", "subject_train.txt"))
 trainingValues <- read.table(file.path(dataPath, "train", "X_train.txt"))
 trainingActivity <- read.table(file.path(dataPath, "train", "y_train.txt"))
 
-# read test data
+# read test dataset
 testSubjects <- read.table(file.path(dataPath, "test", "subject_test.txt"))
 testValues <- read.table(file.path(dataPath, "test", "X_test.txt"))
 testActivity <- read.table(file.path(dataPath, "test", "y_test.txt"))
@@ -53,15 +51,14 @@ testActivity <- read.table(file.path(dataPath, "test", "y_test.txt"))
 
 # read features, don't convert text labels to factors
 features <- read.table(file.path(dataPath, "features.txt"), as.is = TRUE)
-## note: feature names (in features[, 2]) are not unique
-##       e.g. fBodyAcc-bandsEnergy()-1,8
+
 
 # read activity labels
 activities <- read.table(file.path(dataPath, "activity_labels.txt"))
 colnames(activities) <- c("activityId", "activityLabel")
 
 ##############################################################################
-# Look at the properties of the above variable
+# Look at the properties of the above variable to understand the data structure
 ##############################################################################
 
 str(trainingSubjects)
@@ -74,7 +71,7 @@ str(testActivity)
 
 
 ##############################################################################
-# Step 1 - Merge the training and the test sets to create one data set
+# 1 - Merge the training and the test sets to create one data set
 ##############################################################################
 
 # concatenate individual data tables to make single data table
@@ -92,7 +89,7 @@ colnames(humanActivity) <- c("subject", features[, 2], "activity")
 
 
 ##############################################################################
-# Step 2 - Extract only the measurements on the mean and standard deviation
+# 2 - Extract only the measurements on the mean and standard deviation
 #          for each measurement
 ##############################################################################
 
@@ -104,7 +101,7 @@ humanActivity <- humanActivity[, columnsToKeep]
 
 
 ##############################################################################
-# Step 3 - Use descriptive activity names to name the activities in the data
+# 3 - Use descriptive activity names to name the activities in the data
 #          set
 ##############################################################################
 
@@ -114,7 +111,7 @@ humanActivity$activity <- factor(humanActivity$activity,
 
 
 ##############################################################################
-# Step 4 - Appropriately label the data set with descriptive variable names
+# 4 - Appropriately label the data set with descriptive variable names
 ##############################################################################
 
 # get column names
@@ -141,7 +138,7 @@ colnames(humanActivity) <- humanActivityCols
 
 
 ##############################################################################
-# Step 5 - Create a second, independent tidy set with the average of each
+# 5 - Create a second, independent tidy set with the average of each
 #          variable for each activity and each subject
 ##############################################################################
 
@@ -162,3 +159,5 @@ write.table(humanActivityMeans, "tidy_data.txt", row.names = FALSE,
 tidydata<-read.table("tidy_data.txt",head=TRUE)
 
 dim(tidydata)
+
+
